@@ -1,7 +1,7 @@
 function SummaryPage() {
     return (
         <p>
-            Placeholder
+            Summary Placeholder
         </p>
     );
 };

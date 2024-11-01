@@ -4,13 +4,18 @@ import {
 
 function Header() {
     return (
-        <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/report">Report</Link></li>
-                <li><Link to="/summary">Summary</Link></li>
-            </ul>
-        </nav>
+        <div>
+            <nav>
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/report">Report</Link></li>
+                    <li><Link to="/summary">Summary</Link></li>
+                </ul>
+            </nav>
+            <button>
+                Login/Logout Temp
+            </button>
+        </div>
     );
 };
 

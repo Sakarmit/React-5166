@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <p>
-            Placeholder
+            Footer Placeholder
         </p>
     );
 };

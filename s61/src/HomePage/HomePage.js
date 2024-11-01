@@ -1,7 +1,7 @@
 function HomePage() {
     return (
         <p>
-            Placeholder
+            Home Placeholder
         </p>
     );
 };
