@@ -1,8 +1,10 @@
 function LoginPage() {
     return (
-        <p>
-            Login Placeholder
-        </p>
+        <main>
+            <p>
+                Login Placeholder
+            </p>
+        </main>
     );
 };
 

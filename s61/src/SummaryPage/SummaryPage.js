@@ -1,8 +1,10 @@
 function SummaryPage() {
     return (
-        <p>
-            Summary Placeholder
-        </p>
+        <main>
+            <p>
+                Summary Placeholder
+            </p>
+        </main>
     );
 };
 

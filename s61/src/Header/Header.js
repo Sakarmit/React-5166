@@ -4,7 +4,7 @@ import {
 
 function Header() {
     return (
-        <div>
+        <header>
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>
@@ -15,7 +15,7 @@ function Header() {
             <button>
                 Login/Logout Temp
             </button>
-        </div>
+        </header>
     );
 };
 

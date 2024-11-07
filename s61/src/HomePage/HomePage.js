@@ -1,8 +1,10 @@
 function HomePage() {
     return (
-        <p>
-            Home Placeholder
-        </p>
+        <main>
+            <p>
+                Home Placeholder
+            </p>
+        </main>
     );
 };
 

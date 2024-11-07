@@ -1,8 +1,10 @@
 function ReportPage() {
     return (
-        <p>
-            Report Placeholder
-        </p>
+        <main>
+            <p>
+                Report Placeholder
+            </p>
+        </main>
     );
 };
 
