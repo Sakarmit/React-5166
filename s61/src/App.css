@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+
+    background-color: #0073e6;
+    border: solid white;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    list-style-type: none;
+}
+
+nav a {
+    font-weight: bold;
+    color: white;
+}
+
+nav a:hover {
+    font-weight: 900;
+    color: yellow;
+}
+
+main {
+    color: black;
+}
+
+footer {
+    background-color: #0073e6;
+    border: solid white;
+    color: white;
+
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    padding: 5px;
+}
