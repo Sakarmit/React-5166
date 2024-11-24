@@ -21,17 +21,33 @@ const jwtMW = expressjwt({
 });
 
 const mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'sql5.freemysqlhosting.net',
-    user: 'sql5746782',
-    password : 'q2MVwhfSBH',
-    database: 'sql5746782'
-});
-connection.connect((err) => {
-    if (err) {
-      console.error(err);
-    }
-});
+let connection;
+function handleDisconnect() {
+    connection = mysql.createConnection({
+        host: 'sql5.freemysqlhosting.net',
+        user: 'sql5746782',
+        password: 'q2MVwhfSBH',
+        database: 'sql5746782'
+    });
+
+    connection.connect((err) => {
+        if (err) {
+            console.error('Error connecting to the database:', err);
+            setTimeout(handleDisconnect, 2000);
+        }
+    });
+
+    connection.on('error', (err) => {
+        console.error('Database error:', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            handleDisconnect();
+        } else {
+            throw err;
+        }
+    });
+}
+
+handleDisconnect();
 
 let users = [
     {
@@ -48,7 +64,7 @@ app.post('/api/login', (req, res) => {
         return (usr.username == username
              && usr.password == password);
     });
-    
+
     if (user) {
         res.json({
            token: jwt.sign({id: user.id, username: user.username},
