@@ -2,6 +2,12 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
+    next();
+});
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -37,18 +43,19 @@ let users = [
 
 app.post('/api/login', (req, res) => {
     const {username, password} = req.body;
-    
+
     let user = users.find((usr) => {
         return (usr.username == username
              && usr.password == password);
     });
-
+    
     if (user) {
         res.json({
            token: jwt.sign({id: user.id, username: user.username},
-            secretKey, {expiresIn: '1h`'}),
+            secretKey, {expiresIn: '1h'}),
            err: null
         });
+        return;
     } else {
         res.status(401).json({
             token: null,
@@ -61,6 +68,7 @@ app.get('/api/validate', jwtMW, (req, res) => {
     res.json({
         content: "Token valid"
     });
+    return;
 });
 
 app.get('/api/energyUse', jwtMW, (req, res) => {
