@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <footer>
-            Footer Placeholder
+            &copy; 2024 Smit Sakariya. All Rights Reserved.
         </footer>
     );
 };
