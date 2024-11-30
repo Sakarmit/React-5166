@@ -18,8 +18,12 @@ async function loginUser(username, password) {
 }
 
 async function validateActiveToken() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return false;
+    }
+
     try {
-        const token = localStorage.getItem('token');
         await axios.get('http://localhost:3000/api/validate', {
             headers: { 'Authorization': `Bearer ${token}`}
         });

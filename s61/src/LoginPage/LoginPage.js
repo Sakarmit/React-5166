@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../Helpers/userManager";
+import { loginUser, validateActiveToken } from "../Helpers/userManager";
 
 function LoginPage(props) {
   const [username, setUsername] = useState("");
@@ -18,9 +18,20 @@ function LoginPage(props) {
     }
   };
 
-  if (props.isLoggedIn) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (props.isLoggedIn) {
+      navigate("/");
+    }
+
+    async function checkAuth() {
+      const isValid = await validateActiveToken();
+      if (isValid) {
+        props.setIsLoggedIn(true);
+        navigate("/");
+      }
+    }
+    checkAuth();
+  });
 
   return (
     <main>
