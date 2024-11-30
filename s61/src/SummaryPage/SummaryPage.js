@@ -15,7 +15,7 @@ function SummaryPage({ setIsLoggedIn }) {
   }
 
   useEffect(() => {
-    const API_URL = process.env.API_LOCATION;
+    const API_URL = process.env.REACT_APP_API_LOCATION;
     const token = localStorage.getItem("token");
     if (token) {
       axios
