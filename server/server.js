@@ -31,6 +31,8 @@ function handleDisconnect() {
         if (err) {
             console.error('Error connecting to the database:', err);
             setTimeout(handleDisconnect, 2000);
+        } else {
+            console.log('Successfully connected to the database.');
         }
     });
 
