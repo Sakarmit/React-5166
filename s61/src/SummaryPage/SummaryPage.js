@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart } from "@mui/x-charts/PieChart";
+import { useNavigate } from "react-router-dom";
+import { logoutUser } from '../Helpers/userManager';
 
-function SummaryPage() {
+function SummaryPage({ setIsLoggedIn }) {
   const [data, setData] = useState(null);
+
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    logoutUser();
+    navigate('/login');
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -18,9 +27,15 @@ function SummaryPage() {
         setData(response.data);
       })
       .catch((error) => {
-        console.error("There was an error fetching the data!", error);
+        if (error.response && error.response.status === 401) {
+          console.log("Token expired. Logging out...");
+          handleLogout();
+        } else {
+          console.error("There was an error fetching the data!", error);
+        }
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

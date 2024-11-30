@@ -1,11 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { logoutUser } from '../Helpers/userManager';
 
-function Header(props) {
+function Header({ isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
-
     const handleLogout = () => {
-        props.setIsLoggedIn(false);
+        setIsLoggedIn(false);
         logoutUser();
         navigate('/login');
     }
@@ -19,7 +19,7 @@ function Header(props) {
                     <li><Link to="/summary">Summary</Link></li>
                 </ul>
             </nav>
-            {props.isLoggedIn ? 
+            {isLoggedIn ? 
                 <button onClick={handleLogout}>Logout</button> : 
                 null
             }

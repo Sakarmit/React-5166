@@ -29,6 +29,7 @@ async function validateActiveToken() {
         });
         return true;
     } catch (error) {
+        localStorage.removeItem('token');
         return false;
     }
     

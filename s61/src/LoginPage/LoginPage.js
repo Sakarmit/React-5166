@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser, validateActiveToken } from "../Helpers/userManager";
 
-function LoginPage(props) {
+function LoginPage({setIsLoggedIn, isLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,19 +14,19 @@ function LoginPage(props) {
     if (error) {
       setError(error);
     } else {
-      props.setIsLoggedIn(true);
+      setIsLoggedIn(true);
     }
   };
 
   useEffect(() => {
-    if (props.isLoggedIn) {
+    if (isLoggedIn) {
       navigate("/");
     }
 
     async function checkAuth() {
       const isValid = await validateActiveToken();
       if (isValid) {
-        props.setIsLoggedIn(true);
+        setIsLoggedIn(true);
         navigate("/");
       }
     }
