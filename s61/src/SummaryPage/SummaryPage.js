@@ -7,7 +7,8 @@ function SummaryPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios
+    if (token) {
+      axios
       .get("http://localhost:3000/api/energySources", {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -19,6 +20,7 @@ function SummaryPage() {
       .catch((error) => {
         console.error("There was an error fetching the data!", error);
       });
+    }
   }, []);
 
   return (

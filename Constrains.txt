@@ -1,6 +1,0 @@
-Id: 801287961
-Database: MySQL
-Backend: NodeJS
-Frontend: React
-Appname: S61
-Topic: Recent innovations in Clean Energy
