@@ -15,11 +15,12 @@ function ReportPage({ setIsLoggedIn }) {
   }
 
   useEffect(() => {
+    const API_URL = process.env.API_LOCATION;
     const token = localStorage.getItem("token");
+    
     if (token) {
-      const serverUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : `http://${window.location.hostname}:3000`;
       axios
-      .get(`${serverUrl}/api/energyUse`, {
+      .get(`${API_URL}/energyUse`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const API_URL = process.env.API_LOCATION;
+
 async function loginUser(username, password) {
     try {
-        const response = await axios.post('http://localhost:3000/api/login', {
+        const response = await axios.post(`${API_URL}/login`, {
             username: username,
             password: password
         });
@@ -24,7 +26,7 @@ async function validateActiveToken() {
     }
 
     try {
-        await axios.get('http://localhost:3000/api/validate', {
+        await axios.get(`${API_URL}/validate`, {
             headers: { 'Authorization': `Bearer ${token}`}
         });
         return true;
