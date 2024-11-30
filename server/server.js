@@ -37,10 +37,11 @@ function handleDisconnect() {
     });
 
     connection.on('error', (err) => {
-        console.error('Database error:', err);
         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            console.error('Database connection was closed. Reconnecting...');
             handleDisconnect();
         } else {
+            console.error('Database error:', err);
             throw err;
         }
     });
