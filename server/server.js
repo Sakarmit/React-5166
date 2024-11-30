@@ -5,13 +5,15 @@ const PORT = 3000;
 
 app.use(cors());
 
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const jwt = require('jsonwebtoken');
 const {expressjwt} = require('express-jwt')
-const secretKey = "A totally very secret key";
+const secretKey = process.env.SECRET_KEY;
 const jwtMW = expressjwt({
     secret: secretKey,
     algorithms: ['HS256'],
@@ -21,10 +23,10 @@ const mysql = require('mysql');
 let connection;
 function handleDisconnect() {
     connection = mysql.createConnection({
-        host: 'sql5.freemysqlhosting.net',
-        user: 'sql5746782',
-        password: 'q2MVwhfSBH',
-        database: 'sql5746782'
+        host: process.env.DB_HOST,
+        user: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME
     });
 
     connection.connect((err) => {
