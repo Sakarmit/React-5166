@@ -32,6 +32,14 @@ function HomePage() {
           [Source]
         </a>
       </p>
+      <h2>My Tech Stack</h2>
+      <ul>
+        <li>Frontend: React</li>
+        <li>Backend: Node.js with Express</li>
+        <li>Database: MySQL</li>
+        <li>Additional Libraries: Axios, React Router, MUI (Material-UI) for charts</li>
+        <li>Authentication: JSON Web Tokens (JWT)</li>
+      </ul>
     </main>
   );
 }

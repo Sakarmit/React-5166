@@ -47,6 +47,9 @@ main {
     margin: 0 auto;
     padding-bottom: 30px;
     color: black;
+}
+
+main p {
     text-indent: 50px;
 }
 
