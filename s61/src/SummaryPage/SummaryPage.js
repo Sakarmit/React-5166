@@ -23,30 +23,40 @@ function SummaryPage() {
 
   return (
     <main>
-      {data && (
-        <PieChart
-          width={700}
-          height={400}
-          series={[
-            {
-              data: data.map((item, index) => {
-                return { id: index, label: item.source, value: item.value };
-              }),
-              valueFormatter: (val) => {
-                return `${val.value}%`;
+      <div className="chart">
+        {data && (
+          <PieChart
+            width={700}
+            height={500}
+            series={[
+              {
+                data: data.map((item, index) => {
+                  return { id: index, label: item.source, value: item.value };
+                }),
+                valueFormatter: (val) => {
+                  return `${val.value}%`;
+                },
+                borderColor: "black",
+                innerRadius: "50%",
+                paddingAngle: 0.3,
+                highlightScope: { fade: "global", highlight: "item" },
               },
-              borderColor: "black",
-              innerRadius: "50%",
-              paddingAngle: 0.3,
-              highlightScope: { fade: "global", highlight: "item" },
-            },
-          ]}
-        />
-      )}
+            ]}
+            margin={{bottom: 70, left: 50, right:50 }}
+            slotProps={{
+              legend: {
+                direction: 'row',
+                position: { vertical: 'bottom', horizontal: 'middle' },
+                padding: 0,
+              },
+            }}
+          />
+        )}
+      </div>
       <p>
-        The data from
+        The data from&nbsp;
         <a href="https://ourworldindata.org/grapher/share-elec-by-source?time=latest&v=1&csvType=filtered&useColumnShortNames=false">
-          &nbsp;Our World in Data
+          Our World in Data
         </a>
         &nbsp;highlights the sources of energy used for electricity generation
         worldwide. Coal remains the largest contributor at 35.51%, followed by

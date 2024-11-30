@@ -9,10 +9,19 @@
 header {
     display: flex;
     justify-content: space-between;
-    font-size: large;
+
+    position: sticky;
+    top: 0;
 
     background-color: #0073e6;
     border: solid white;
+
+    font-size: large;
+}
+
+header button {
+    height: 50px;
+    margin: auto 5px auto 0;
 }
 
 nav ul {
@@ -34,16 +43,42 @@ nav a:hover {
 }
 
 main {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 30px;
     color: black;
+    text-indent: 50px;
+}
+
+main img {
+    display: block;
+    margin: 0 auto;
+    max-height: 500px;
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+
+    padding: 5px;
+
     background-color: #0073e6;
     border: solid white;
     color: white;
 
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
-    padding: 5px;
+    text-align: center;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart > * {
+    width: 90% !important;
+    height: min-content !important;
+    max-height: 500px;
 }

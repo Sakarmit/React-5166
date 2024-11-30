@@ -23,27 +23,29 @@ function ReportPage() {
 
   return (
     <main>
-      {data && (
-        <BarChart
-          width={500}
-          height={500}
-          series={[
-            {
-              data: data.map((item) => item.totalEnergyUse),
-              valueFormatter: (val) => {
-                return `${val} TWh`;
+      <div className="chart">
+        {data && (
+          <BarChart
+            width={500}
+            height={500}
+            series={[
+              {
+                data: data.map((item) => item.totalEnergyUse),
+                valueFormatter: (val) => {
+                  return `${val} TWh`;
+                },
               },
-            },
-          ]}
-          xAxis={[
-            {
-              data: data.map((item) => item.year),
-              label: "World Electricity Demand (TWh)",
-              scaleType: "band",
-            },
-          ]}
-        />
-      )}
+            ]}
+            xAxis={[
+              {
+                data: data.map((item) => item.year),
+                label: "World Electricity Demand (TWh)",
+                scaleType: "band",
+              },
+            ]}
+          />
+        )}
+      </div>
       <p>
         The chart illustrates the yearly world electricity demand from 2000 to
         2022, measured in terawatt-hours (TWh). The data, sourced from
@@ -52,9 +54,9 @@ function ReportPage() {
         </a>
         , shows a consistent upward trend in global electricity consumption over
         the 22-year period. This significant rise highlights the growing global
-        reliance on electricity. The chart underscores the importance of sustainable energy
-        solutions to meet the escalating demand while addressing environmental
-        concerns.
+        reliance on electricity. The chart underscores the importance of
+        sustainable energy solutions to meet the escalating demand while
+        addressing environmental concerns.
       </p>
     </main>
   );
