@@ -12,9 +12,12 @@ header {
 
     position: sticky;
     top: 0;
+    z-index: 10;
 
     background-color: #0073e6;
-    border: solid white;
+    border-left: solid white;
+    border-top: solid white;
+    border-right: solid white;
 
     font-size: large;
 }
@@ -94,9 +97,11 @@ footer {
     padding: 5px;
 
     background-color: #0073e6;
-    border: solid white;
     color: white;
-
+    border-left: solid white;
+    border-bottom: solid white;
+    border-right: solid white;
+    
     text-align: center;
 }
 
