@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <footer>
+        <footer role="contentinfo">
             &copy; 2024 Smit Sakariya. All Rights Reserved.
         </footer>
     );

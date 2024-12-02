@@ -35,8 +35,8 @@ function LoginPage({setIsLoggedIn, isLoggedIn }) {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        <h2>Login to access site</h2>
+      <form onSubmit={handleSubmit} aria-labelledby="login-form">
+        <h2 is="login-form">Login to access site</h2>
         <div>
           <label htmlFor="username">Username:</label>
           <input
@@ -46,6 +46,8 @@ function LoginPage({setIsLoggedIn, isLoggedIn }) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            aria-required="true"
+            aria-label="Enter your username"
           />
         </div>
         <div>
@@ -57,9 +59,11 @@ function LoginPage({setIsLoggedIn, isLoggedIn }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            aria-required="true"
+            aria-label="Enter your password"
           />
         </div>
-        {error && <p>{error}</p>}
+        {error && <p role="alert">{error}</p>}
         <button type="submit">Login</button>
       </form>
     </main>

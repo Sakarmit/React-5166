@@ -11,7 +11,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
     }
 
     return (
-        <header>
+        <header role="banner">
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>

@@ -6,6 +6,8 @@ import { logoutUser } from '../Helpers/userManager';
 
 function SummaryPage({ setIsLoggedIn }) {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -32,16 +34,29 @@ function SummaryPage({ setIsLoggedIn }) {
           console.log("Token expired. Logging out...");
           handleLogout();
         } else {
+          setError("There was an error fetching the data!");
           console.error("There was an error fetching the data!", error);
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (loading) {
+    return <p>Loading Data...</p>;
+  }
+
+  if (error) {
+    return <p role="alert">{error}</p>;
+  }
+
   return (
     <main>
-      <div className="chart">
+      <div className="chart" role="img"
+        aria-label="Pie Chart showing sources of electricity generation worldiwde">
         {data && (
           <PieChart
             width={700}
